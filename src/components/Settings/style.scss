@@ -1,20 +1,42 @@
 @use "src/styles/vars";
+@use "sass:color";
 
 .settings {
   display: flex;
   position: fixed;
   right: 0;
   top: 0;
-  background-color: vars.$colorBackground;
+  max-width: 17em;
+  z-index: 2;
+  transition: transform 0.3s cubic-bezier(0.37, 1.31, .67, 1.16);
 
+  &--close {
+    transform: translateX(calc(100% - 1rem));
+  }
+
+  &-toggler {
+    position: absolute;
+    border-radius: 50%;
+    right: 100%;
+    top: 1rem;
+    height: 3em;
+    width: 3em;
+    color: #5300ff;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
 }
 
 .settingsForm {
   display: flex;
   flex-direction: column;
-  width: 100%;
-  max-width: 17em;
-  z-index: 2;
+
   padding: 1rem;
 
   &-input{
@@ -22,7 +44,6 @@
     margin-bottom: 0.5rem;
     border-radius: 0.75rem;
     border: 1px solid #eee;
-    width: 100%;
     background-color: white;
     &:focus {
       border-color: #aaa;
@@ -38,9 +59,9 @@
     background-color: #5300ff;
     color: #fff;
     text-align: center;
+    &:hover {
+      background-color: color.scale(#5300ff,$lightness: -20%);
+    }
   }
 }
 
-.button {
-  border-radius: 25px;
-}
