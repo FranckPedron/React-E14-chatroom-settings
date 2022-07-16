@@ -1,21 +1,21 @@
-import {change} from "../../actions";
+import {changeValue} from "../../actions";
 import {useDispatch, useSelector} from "react-redux";
 import PropTypes from "prop-types";
 
-function ControlledInput({name, ...otherProps}) {
-  const value = useSelector(state => state[name]);
+function ControlledInput({inputName, ...otherProps}) {
+  const value = useSelector(state => state[inputName]);
   const dispatch = useDispatch();
 
   const handleChange = (e) => {
-    dispatch(change(name, e.target.value));
+    dispatch(changeValue(inputName, e.target.value));
   };
   return (
-    <input name={name} value={value} placeholder={name} onChange={handleChange} {...otherProps}/>
+    <input name={inputName} value={value} placeholder={inputName} onChange={handleChange} {...otherProps}/>
   )
 }
 
 ControlledInput.propTypes = {
-  name: PropTypes.string.isRequired,
+  inputName: PropTypes.string.isRequired,
 };
 
 export default ControlledInput;
