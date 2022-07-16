@@ -12,6 +12,14 @@
 
   &--close {
     transform: translateX(calc(100% - 1rem));
+
+    .settings-toggler {
+      transform: rotate(45deg);
+
+      &:hover {
+        transform: rotate(45deg) scale(1.1);
+      }
+    }
   }
 
   &-toggler {
