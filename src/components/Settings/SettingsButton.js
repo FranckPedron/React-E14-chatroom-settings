@@ -1,5 +1,6 @@
 import {useDispatch} from "react-redux";
 import {toggleOpen} from "../../actions";
+import { X } from "react-feather";
 
 function SettingsButton() {
   const dispatch = useDispatch();
@@ -9,7 +10,7 @@ function SettingsButton() {
   }
 
   return(
-  <button className="button" type="button" onClick={handleClick}>X</button>
+  <button className="button" type="button" onClick={handleClick} title="Fermer"><X /></button>
   )
 }
 
