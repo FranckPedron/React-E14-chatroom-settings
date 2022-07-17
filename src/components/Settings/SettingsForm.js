@@ -1,27 +1,13 @@
 import './style.scss';
 import ControlledInput from "../ControlledInput";
-import axios from "axios";
-import {useDispatch, useSelector} from "react-redux";
-import {saveUser, showError} from "../../actions";
+import {useDispatch} from "react-redux";
 
 function SettingsForm() {
-  const email = useSelector(state => state.email);
-  const password = useSelector(state => state.password);
   const dispatch = useDispatch();
 
   const handleSubmit = async(e) => {
     e.preventDefault();
-    try {
-      const result = await axios.post('http://localhost:3001/login', {
-        email: email,
-        password: password,
-      })
-       const {pseudo} = result.data;
-    dispatch(saveUser(pseudo));
-    }
-    catch (err) {
-      dispatch(showError(`Mauvais email ou password`));
-    }
+    dispatch({type: 'LOGIN'});
   }
 
   return (
