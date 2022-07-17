@@ -9,6 +9,7 @@ function ControlledInput({inputName, ...otherProps}) {
   const handleChange = (e) => {
     dispatch(changeValue(inputName, e.target.value));
   };
+
   return (
     <input name={inputName} value={value} placeholder={inputName} onChange={handleChange} {...otherProps}/>
   )
