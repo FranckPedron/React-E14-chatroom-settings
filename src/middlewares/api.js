@@ -1,10 +1,10 @@
 import axios from "axios";
-import {saveUser, showError} from "../actions";
+import {LOGIN, saveUser, showError} from "../actions";
 
 const api = (store) => (next) => async (action) => {
 
   switch (action.type) {
-    case 'LOGIN':
+    case LOGIN:
       const {email, password} = store.getState();
         try {
           const result = await axios.post('http://localhost:3001/login', {

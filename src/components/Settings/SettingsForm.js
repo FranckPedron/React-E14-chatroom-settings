@@ -1,13 +1,14 @@
 import './style.scss';
 import ControlledInput from "../ControlledInput";
 import {useDispatch} from "react-redux";
+import {login} from "../../actions";
 
 function SettingsForm() {
   const dispatch = useDispatch();
 
   const handleSubmit = async(e) => {
     e.preventDefault();
-    dispatch({type: 'LOGIN'});
+    dispatch(login());
   }
 
   return (
