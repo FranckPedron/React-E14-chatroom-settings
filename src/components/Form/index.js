@@ -1,6 +1,6 @@
 import {useDispatch, useSelector} from "react-redux";
-import {addMessage, showError, writeMessage} from "../../actions";
-import { Send } from 'react-feather'
+import {sendMessage, showError, writeMessage} from "../../actions";
+import {Send} from 'react-feather'
 import './style.scss';
 import {useEffect, useRef} from "react";
 
@@ -17,12 +17,10 @@ function Form() {
     e.preventDefault();
     if (currentMessage.length === 0) {
       dispatch(showError('Un message ne peut être vide'))
-    }
-    else if (currentMessage.trim().length === 0) {
+    } else if (currentMessage.trim().length === 0) {
       dispatch(showError('Un message ne peut contenir uniquement des espaces'))
-    }
-    else {
-      dispatch(addMessage());
+    } else {
+      dispatch(sendMessage());
     }
   }
 
@@ -32,8 +30,10 @@ function Form() {
 
   return (
     <form className="form" onSubmit={handleSubmit}>
-      <input className="form-input" ref={inputRef} type="text" placeholder="Saisissez votre message" aria-label="Message" value={currentMessage} onChange={handleChange} />
-      <button className="form-button" onClick={handleSubmit} type="submit" aria-label="Envoyer" ><Send size="30" /></button>
+      <input className="form-input" ref={inputRef} type="text" placeholder="Saisissez votre message"
+             aria-label="Message" value={currentMessage} onChange={handleChange}/>
+      <button className="form-button" onClick={handleSubmit} type="submit" aria-label="Envoyer"><Send size="30"/>
+      </button>
     </form>
   )
 }

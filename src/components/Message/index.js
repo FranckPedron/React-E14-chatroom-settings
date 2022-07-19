@@ -3,9 +3,13 @@ import './style.scss';
 import {useSelector} from "react-redux";
 import {getIsMine} from "src/selectors";
 import classNames from "classnames";
+import messageSound from "src/assets/sounds/message.mp3";
+import { useSound} from "src/hooks";
 
 function Message({ content, author }) {
 const isMine = useSelector(getIsMine(author));
+
+useSound(messageSound, content, author, isMine);
 
   return (
     <article className={classNames('message', { 'message--is-mine': isMine })}>

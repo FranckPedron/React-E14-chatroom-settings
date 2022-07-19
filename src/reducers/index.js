@@ -1,10 +1,9 @@
 import {ADD_MESSAGE, CHANGE_VALUE, LOGOUT, SHOW_ERROR, TOGGLE_OPEN, WRITE_MESSAGE, SAVE_USER} from "../actions";
-import {getNextMessageID} from "../selectors";
 
 const initialState = {
   messages: [
-    {id:0, content:'Petit essai',author:'Testeur 1'},
-    {id:1, content:'Deuxième essai',author:'Testeur 2'}
+    {id: 0, content: 'Petit essai', author: 'Testeur 1'},
+    {id: 1, content: 'Deuxième essai', author: 'Testeur 2'}
   ],
   currentMessage: '',
   displayError: false,
@@ -28,11 +27,7 @@ function reducer(state = initialState, action = {}) {
     case ADD_MESSAGE:
       return {
         ...state,
-        messages: [...state.messages, {
-            id: getNextMessageID(state),
-            author: state.pseudo,
-            content: state.currentMessage
-        }],
+        messages: [...state.messages, action.message],
         currentMessage: '',
         displayError: false,
       };
@@ -69,10 +64,10 @@ function reducer(state = initialState, action = {}) {
 
     case LOGOUT:
       return {
-      ...state,
-      logged: false,
-      pseudo: 'Anonyme'
-    };
+        ...state,
+        logged: false,
+        pseudo: 'Anonyme'
+      };
 
     default:
       return state;
